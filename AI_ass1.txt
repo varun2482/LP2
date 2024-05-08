@@ -1,0 +1,59 @@
+def dfs(adjancecy_matrix, v, visited):
+    visited.append(v)
+    print(v,end=" ")
+    for i in range(len(adjancecy_matrix)):
+        if (i not in visited) and (adjancecy_matrix[v][i]):
+            dfs(adjancecy_matrix,i, visited)
+
+def bfs(adjancecy_matrix,visited, queue):
+    if not queue:
+        return
+    node = queue[0]
+    queue = queue[1:]
+    for i in range(len(adjancecy_matrix)):
+        if (adjancecy_matrix[node][i]) and (i not in visited):
+            visited.append(i)
+            queue.append(i)
+    bfs(adjancecy_matrix, visited, queue)
+
+node = int(input("ENTER TOTAL NODES = "))
+adjancecy_matrix = [[0 for i in range(node)] for i in range(node)]
+for i in range(node):
+    for j in range(i+1,node):
+        check = input(f"IS NODE PRESENT BETWEEN {i} and {j} (y/n) = ")
+        if check=='y' or check=='Y':
+            adjancecy_matrix[i][j] = adjancecy_matrix[j][i] =1
+
+print("DFS = ",end="")
+visited = []
+dfs(adjancecy_matrix,0, visited)    # 0 is Start vertex
+print("")
+
+queue = [0]
+visited = [0]
+bfs(adjancecy_matrix,visited, queue)    # 0 is Start vertex
+print("BFS = ",end="")
+[print(i,end=" ") for i in visited]
+
+
+
+
+
+
+
+
+
+
+Output:
+
+PS C:\Users\hp\Desktop\AI> python assi1.py
+ENTER TOTAL NODES = 4
+IS NODE PRESENT BETWEEN 0 and 1 (y/n) = y
+IS NODE PRESENT BETWEEN 0 and 2 (y/n) = y
+IS NODE PRESENT BETWEEN 0 and 3 (y/n) = n
+IS NODE PRESENT BETWEEN 1 and 2 (y/n) = n
+IS NODE PRESENT BETWEEN 1 and 3 (y/n) = y
+IS NODE PRESENT BETWEEN 2 and 3 (y/n) = y
+DFS = 0 1 3 2
+BFS = 0 1 2 3
+PS C:\Users\hp\Desktop\AI>

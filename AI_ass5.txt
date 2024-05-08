@@ -1,0 +1,158 @@
+menu = [
+    ['Vada Pav', 15],
+    ['Maggi', 40],
+    ['Samosa', 20],
+    ['Veg Pizza', 50],
+    ['Tea', 10],
+    ['Coffee', 15]
+]
+orders = []
+total = 0
+def displayMenu():
+    print("\n")
+    print("\t\t\t\t\t Here's our Menu")
+    print("\t\t\t\t -------------------------------------")
+    print("\t\t\t\t", "ITEMS               \t|\tPRICE")
+    print("\t\t\t\t -------------------------------------")
+    for i in range(len(menu)):
+        print("\t\t\t\t", i + 1, ".", menu[i][0], "        \t|\t", menu[i][1])
+
+def take_order():
+    displayMenu()
+    option = int(input("\n\t\t\t\t WHAT YOU WANT TO ORDER ?   =>"))
+    if option > len(menu) or option < 0:
+        option = int(input("\n\t\t\t\t PLEASE SELECT CORRECT CHOISE   =>"))
+    quantity = int(input(f"\n\t\t\t\t YOU HAVE SELECTED '{menu[option - 1][0]}'' ENTER QUANTITY  =>"))
+    orders.append([option-1, quantity])
+
+def genrateRecipt():
+    total = 0
+    print("\n\n\t\t\t\t", "ITEMS               \t|\tQUANTITY       \t|\t PRICE")
+    print("\t\t\t\t ---------------------------------------------------------------")
+    for i in range(len(orders)):
+        cost = menu[orders[i][0]][1] * orders[i][1]
+        print("\t\t\t\t", i + 1, ".", menu[orders[i][0]][0], "        \t|\t", orders[i][1], "          \t|\t", cost)
+        total += cost
+    print("\t\t\t\t ---------------------------------------------------------------")
+    print(f"\t\t\t\t YOUR TOTAL AMOUNT IS Rs. {total}")
+    print("\t\t\t\t ---------------------------------------------------------------")
+
+print("=======================================================================================================================================================\n\n")
+print("\t\t\t\t\t FOODIES SPOT ")
+print("\t\t\t\t WELCOME TO OUR RESTAURANT")
+
+take_order()
+choise = input("\t\t\t\t DO YOU WANT TO SELECT MORE ITEMS (Y/N) ?  => ")
+while(choise=='Y' or choise=='y'):
+    take_order()
+    choise = input("\t\t\t\t DO YOU WANT TO SELECT MORE ITEMS (Y/N) ?  => ")
+
+genrateRecipt()
+flag = input("\t\t\t\t CONFIRM YOR ORDER (Y/N) ?  => ")
+if flag=='y' or flag=='Y':
+    print("\t\t\t\t THANK YOU FOR YOUR ORDER !!!")
+else:
+    print("\t\t\t\t THANK YOU !!!")
+
+
+
+
+
+
+####Output:
+
+PS C:\Users\hp\Desktop\AI> python assi5.py
+=======================================================================================================================================================
+
+
+                                         FOODIES SPOT
+                                 WELCOME TO OUR RESTAURANT
+
+
+                                         Here's our Menu
+                                 -------------------------------------
+                                 ITEMS                  |       PRICE
+                                 -------------------------------------
+                                 1 . Vada Pav           |        15
+                                 2 . Maggi              |        40
+                                 3 . Samosa             |        20
+                                 4 . Veg Pizza          |        50
+                                 5 . Tea                |        10
+                                 6 . Coffee             |        15
+
+                                 WHAT YOU WANT TO ORDER ?   =>3
+
+                                 YOU HAVE SELECTED 'Samosa'' ENTER QUANTITY  =>4
+                                 DO YOU WANT TO SELECT MORE ITEMS (Y/N) ?  =>n
+
+
+PS C:\Users\hp\Desktop\AI> python assi5.py
+=======================================================================================================================================================       
+
+
+                                         FOODIES SPOT
+                                 WELCOME TO OUR RESTAURANT
+
+
+                                         Here's our Menu
+                                 -------------------------------------
+                                 ITEMS                  |       PRICE
+                                 -------------------------------------
+                                 1 . Vada Pav           |        15
+                                 2 . Maggi              |        40
+                                 3 . Samosa             |        20
+                                 4 . Veg Pizza          |        50
+                                 5 . Tea                |        10
+                                 6 . Coffee             |        15
+
+                                 WHAT YOU WANT TO ORDER ?   =>3
+
+                                 YOU HAVE SELECTED 'Samosa'' ENTER QUANTITY  =>5
+                                 DO YOU WANT TO SELECT MORE ITEMS (Y/N) ?  => y
+
+
+                                         Here's our Menu
+                                 -------------------------------------
+                                 ITEMS                  |       PRICE
+                                 -------------------------------------
+                                 1 . Vada Pav           |        15
+                                 2 . Maggi              |        40
+                                 3 . Samosa             |        20
+                                 4 . Veg Pizza          |        50
+                                 5 . Tea                |        10
+                                 6 . Coffee             |        15
+
+                                 WHAT YOU WANT TO ORDER ?   =>1
+
+                                 YOU HAVE SELECTED 'Vada Pav'' ENTER QUANTITY  =>2
+                                 DO YOU WANT TO SELECT MORE ITEMS (Y/N) ?  => y
+
+
+                                         Here's our Menu
+                                 -------------------------------------
+                                 ITEMS                  |       PRICE
+                                 -------------------------------------
+                                 1 . Vada Pav           |        15
+                                 2 . Maggi              |        40
+                                 3 . Samosa             |        20
+                                 4 . Veg Pizza          |        50
+                                 5 . Tea                |        10
+                                 6 . Coffee             |        15
+
+                                 WHAT YOU WANT TO ORDER ?   =>6
+
+                                 YOU HAVE SELECTED 'Coffee'' ENTER QUANTITY  =>7
+                                 DO YOU WANT TO SELECT MORE ITEMS (Y/N) ?  => n
+
+
+                                 ITEMS                  |       QUANTITY        |        PRICE
+                                 ---------------------------------------------------------------
+                                 1 . Samosa             |        5              |        100
+                                 2 . Vada Pav           |        2              |        30
+                                 3 . Coffee             |        7              |        105
+                                 ---------------------------------------------------------------
+                                 YOUR TOTAL AMOUNT IS Rs. 235
+                                 ---------------------------------------------------------------
+                                 CONFIRM YOR ORDER (Y/N) ?  => y
+                                 THANK YOU FOR YOUR ORDER !!!
+PS C:\Users\hp\Desktop\AI>

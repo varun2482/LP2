@@ -1,0 +1,129 @@
+knowledge_base = {
+    "python": {
+        "description": "Python is a high-level, interpreted programming language known for its readability and simplicity.",
+        "uses": "Python is used for web development, data analysis, artificial intelligence, and scientific computing.",
+        "example": "An example of Python code is:\nprint('Hello, World!')"
+    },
+    "java": {
+        "description": "Java is a popular programming language known for its platform independence and robustness.",
+        "uses": "Java is used for developing desktop, web, and mobile applications, as well as large-scale enterprise systems.",
+        "example": "An example of Java code is:\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println('Hello, World!');\n    }\n}"
+    },
+    "c": {
+        "description": "C is a general-purpose, procedural programming language developed by Dennis Ritchie.",
+        "uses": "C is widely used for system programming, developing operating systems, and embedded systems programming.",
+        "example": "An example of C code is:\n#include <stdio.h>\nint main() {\n    printf('Hello, World!');\n    return 0;\n}"
+    },
+    "c++": {
+        "description": "C++ is a powerful, general-purpose programming language based on C.",
+        "uses": "C++ is used for developing desktop applications, games, and performance-critical applications.",
+        "example": "An example of C++ code is:\n#include <iostream>\nint main() {\n    std::cout << 'Hello, World!' << std::endl;\n    return 0;\n}"
+    },
+    "javascript": {
+        "description": "JavaScript is a programming language that enables interactive web pages.",
+        "uses": "JavaScript is used for client-side web development and building web applications.",
+        "example": "An example of JavaScript code is:\nconsole.log('Hello, World!');"
+    },
+    "ruby": {
+        "description": "Ruby is a dynamic, object-oriented programming language.",
+        "uses": "Ruby is used for web development, prototyping, and automation.",
+        "example": "An example of Ruby code is:\nputs 'Hello, World!'"
+    },
+    "php": {
+        "description": "PHP is a server-side scripting language designed for web development.",
+        "uses": "PHP is used for creating dynamic web pages and web applications.",
+        "example": "An example of PHP code is:\n<?php echo 'Hello, World!'; ?>"
+    }
+}
+
+
+def get_user_query():
+    print("Welcome to the Information Management System!")
+    query = input("What would you like to know? ")
+    return query
+
+def search_pattern(query):
+    query = query.lower()
+    knowledge = list(knowledge_base.keys())
+    requirement = []
+    [requirement.append(i) for i in knowledge if i in query.split()]
+
+    if requirement == []:
+        print("\n-Sorry, I don't have information on that topic.\n")
+    else:
+        print("\n\n\t\t\t ==== RESPONSE ===\n")
+        for i in requirement:
+            print("-- DESCRIPTION : ",knowledge_base[i]["description"])
+            print("-- USE         : ", knowledge_base[i]["uses"])
+            print("-- EXAMPLE     : \n", knowledge_base[i]["example"])
+            print("\n\n")
+
+def main():
+    while True:
+        query = get_user_query()
+        if query.lower() == "exit":
+            break
+        response = search_pattern(query)
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+#####OUTPUT
+
+
+
+PS C:\Users\hp\Desktop\AI> python assi6.py
+Welcome to the Information Management System!
+What would you like to know? I want to know about python and c++
+
+
+                         ==== RESPONSE ===                                                                             
+                                                                                                                       
+-- DESCRIPTION :  Python is a high-level, interpreted programming language known for its readability and simplicity.   
+-- USE         :  Python is used for web development, data analysis, artificial intelligence, and scientific computing.
+-- EXAMPLE     :                                                                                                       
+ An example of Python code is:
+print('Hello, World!')
+
+
+
+-- DESCRIPTION :  C++ is a powerful, general-purpose programming language based on C.
+-- USE         :  C++ is used for developing desktop applications, games, and performance-critical applications.
+-- EXAMPLE     :
+ An example of C++ code is:
+#include <iostream>
+int main() {
+    std::cout << 'Hello, World!' << std::endl;
+    return 0;
+}
+
+
+
+Welcome to the Information Management System!
+What would you like to know? what is ruby
+
+
+                         ==== RESPONSE ===
+
+-- DESCRIPTION :  Ruby is a dynamic, object-oriented programming language.
+-- USE         :  Ruby is used for web development, prototyping, and automation.
+-- EXAMPLE     :
+ An example of Ruby code is:
+puts 'Hello, World!'
+
+
+
+Welcome to the Information Management System!
+What would you like to know? ML
+
+-Sorry, I don't have information on that topic.
+
+Welcome to the Information Management System!
+What would you like to know? EXIT
+PS C:\Users\hp\Desktop\AI>

@@ -1,0 +1,41 @@
+adjancecy_matrix =[  [0, 2, 0, 1],
+  [2, 0, 3, 0],
+  [0, 3, 0, 4],
+  [1, 0, 4, 0] ]
+start = 0
+available_nodes = [0]
+MST = []  # [ [  From  |  To  |   Weight] ]
+while(len(available_nodes)!=len(adjancecy_matrix)):
+        next_possible_vertex = []  # [ [  From  |  To  |   Weight] ]
+        for node in available_nodes:
+                for i in range(len(adjancecy_matrix[node])):
+                        if (adjancecy_matrix[node][i] != 0) and (i not in available_nodes):
+                                next_possible_vertex.append([node, i, adjancecy_matrix[node][i]])
+        max = 97000
+        for i in next_possible_vertex:
+                if i[2] < max:
+                        new_vertex = i
+                        max = i[2]
+        MST.append(new_vertex)
+        available_nodes.append(new_vertex[1])
+print("\nMINIMUM SPANNING TREE AVAILABLE IS :")
+print("\nFROM\tTO\tWEIGHT")
+for i in MST:
+    print(i[0],"\t",i[1],"\t",i[2])
+
+
+
+
+
+
+###OUTPUT :
+
+PS C:\Users\hp\Desktop\AI> python assi3.py
+
+MINIMUM SPANNING TREE AVAILABLE IS :
+
+FROM    TO      WEIGHT
+0        3       1
+0        1       2
+1        2       3
+PS C:\Users\hp\Desktop\AI>
